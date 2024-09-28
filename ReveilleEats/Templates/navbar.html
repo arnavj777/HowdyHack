@@ -1,5 +1,5 @@
-<a href="/">
-    <h1>LOGO</h1>
-</a>
-
-<hr>
+<form action="{% url 'search' %}" method="POST">
+    {% csrf_token %}
+    <input class="search" type="text" name="q" placeholder="Search">
+    <input type="submit" value="Submit">
+  </form>
