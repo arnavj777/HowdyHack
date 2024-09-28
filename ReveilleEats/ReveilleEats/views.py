@@ -82,18 +82,19 @@ chat_session = model.start_chat(
   ]
 )
 
-loggedIn = False
+'''loggedIn = False
 def login(request):
     return render(request, 'login.html')
-
+    
+'''
 
 
 def home(request):
     """
     Displays the homepage with the chat interface. No AI response yet.
     """
-    if loggedIn:
-        return render(request, 'navbar.html')  # Render the home template
+    #if loggedIn:
+    return render(request, 'navbar.html')  # Render the home template
 
 def search(request):
     """
@@ -139,4 +140,3 @@ def format_recipe(text):
     formatted_text += '</ol>'
     
     return formatted_text
-

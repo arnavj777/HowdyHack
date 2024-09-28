@@ -19,7 +19,7 @@ from django.urls import path
 from . import views
 app_name = 'ReveilleEats'
 urlpatterns = [
-    path('', views.login, name = 'login'),
-    path('home/', views.home, name='home'),  # Home page
+    #path('', views.login, name = 'login'),
+    path('', views.home, name='home'),  # Home page
     path('search/', views.search, name='search'),  # Chatbot interaction
 ]
