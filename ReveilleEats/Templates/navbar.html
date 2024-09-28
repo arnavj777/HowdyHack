@@ -8,14 +8,23 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9; /* Light background for contrast */
             padding: 20px;
+            color: #500000; /* Texas A&M Maroon */
         }
         h1 {
             text-align: center;
+            color: #500000; /* Texas A&M Maroon */
+            font-size: 2.5em;
         }
         #chat-container {
             width: 50%;
             margin: 0 auto;
+            background-color: #FFFFFF; /* White background for the chat container */
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #500000; /* Maroon border for chat container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         form {
             margin-bottom: 20px;
@@ -25,17 +34,20 @@
             width: 70%;
             padding: 10px;
             font-size: 16px;
+            border: 2px solid #500000; /* Maroon border for input */
+            border-radius: 5px;
         }
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #28a745;
+            background-color: #500000; /* Texas A&M Maroon for button */
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #730000; /* Darker maroon on hover */
         }
         #chatbot-response {
             background-color: #f8f9fa;
@@ -45,6 +57,7 @@
         }
         #chatbot-response p {
             font-size: 18px;
+            color: #500000; /* Maroon for text inside chatbot response */
         }
     </style>
 </head>
@@ -60,7 +73,6 @@
         </form>
 
         <!-- Chatbot Response Section -->
-        <!-- navbar.html -->
         <div id="chatbot-response">
             {% if chatbot_response %}
                 {{ chatbot_response|safe }}
