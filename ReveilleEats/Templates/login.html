@@ -1,0 +1,111 @@
+<html lang="en"></html>
+  
+<head>
+  <meta charset="UTF-8" />
+  <title>Screen 1</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+</head>
+
+  
+<body>
+  <h1><br>Reveille<br> Recipes<br> </h1>
+  <a href='https://postimg.cc/SJF4R0VB' target='_blank'>      <img src='https://i.postimg.cc/SJF4R0VB/W115387-13275.jpg'                                                        border='0'                                                  alt='W115387-13275'
+       margin: 20px; />
+  </a>
+</body>
+  
+</html>
+
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Ewert);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 20;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 100.5%;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Ewert',serif;
+  font-weight: 100;
+  font-style: normal;
+  
+}
+
+body {
+  background-color: #550000;
+  color: #f5dbc8;
+  box-sizing: border-box;
+  padding: 10px;
+  letter-spacing: 0.03em;
+  font-size: 1.6rem;
+}
+
+img {
+  white-space: pre;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 150 px;
+}
+
+.vertical-scroll-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  gap: 6rem 0;
+  min-width: 400px;
+  overflow-y: scroll;
+  scrollbar-color: #800000;
+  scroll-snap-type: y mandatory;  
+  padding: 200px 20px;
+  height: 400px;
+}
+
+.vertical-scroll-container img {
+  scroll-snap-align: center;
+  width: 400px;
+
+  animation: slideInOut;
+  animation-timeline: view();
+}
+
+@keyframes slideInOut {
+  entry 0% {
+    transform: scale(.8) translateY(100px); 
+    opacity: 0;
+  }
+  entry 100% { 
+    transform: scale(1) translateY(0); 
+    opacity: 1;
+  }
+  exit 0% {
+    transform: scale(1) translateY(0); 
+    opacity: 1;    
+  }
+  exit 100% { 
+    transform: scale(.8) translateY(-100px); 
+    opacity: 0 
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 40em) {
+  .vertical-scroll-container img {
+    padding: 0;
+    width: 300px;
+  }
+}
+</style>
