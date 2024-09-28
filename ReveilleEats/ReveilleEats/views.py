@@ -10,6 +10,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 def home(request):
+    
     return render(request, 'home.html')
 
 def search(request):
