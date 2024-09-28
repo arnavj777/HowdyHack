@@ -19,7 +19,8 @@ from django.urls import path
 from . import views
 app_name = 'ReveilleEats'
 urlpatterns = [
-    #path('', views.login, name = 'login'),
-    path('', views.home, name='home'),  # Home page
-    path('search/', views.search, name='search'),  # Chatbot interaction
+    path('', views.login_view, name='login'),  # Login page as the default
+    path('home/', views.home, name='home'),  # Home page (requires login)
+    path('logout/', views.logout_view, name='logout'),  # Logout functionality
+    path('search/', views.search, name='search'),  # Chatbot search functionality
 ]

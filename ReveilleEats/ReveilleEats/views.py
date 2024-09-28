@@ -46,6 +46,7 @@ $ pip install google-generativeai
 
 import os
 import google.generativeai as genai
+from django.shortcuts import render, redirect
 
 
 # Create the model
@@ -88,6 +89,40 @@ def login(request):
     
 '''
 
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+# Home page with the chatbot after login
+@login_required
+def home(request):
+    """
+    Displays the homepage with the chat interface. Requires login.
+    """
+    return render(request, 'navbar.html')  # Render the home template
+
+def login_view(request):
+    """
+    Renders the login page and handles user authentication.
+    """
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home')  # Redirect to the home page after successful login
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+    
+    return render(request, 'login.html')
+
+def logout_view(request):
+    """
+    Logs out the user and redirects them to the login page.
+    """
+    auth_logout(request)
+    return redirect('login')
 
 def home(request):
     """
