@@ -1,5 +1,74 @@
-<form action="{% url 'search' %}" method="POST">
-    {% csrf_token %}
-    <input class="search" type="text" name="q" placeholder="Search">
-    <input type="submit" value="Submit">
-  </form>
+<!-- navbar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Reveille</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #chat-container {
+            width: 50%;
+            margin: 0 auto;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #chatbot-response {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #chatbot-response p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h1>Chat with Reveille</h1>
+
+        <!-- Search Form -->
+        <form method="POST" action="{% url 'search' %}">
+            {% csrf_token %}
+            <input type="text" name="q" placeholder="Enter your message here" required>
+            <button type="submit">Send</button>
+        </form>
+
+        <!-- Chatbot Response Section -->
+        <!-- navbar.html -->
+        <div id="chatbot-response">
+            {% if chatbot_response %}
+                {{ chatbot_response|safe }}
+            {% else %}
+                <p>Hi, I am Reveille. Tell me what ingredients you have, and I will help you create a recipe!</p>
+            {% endif %}
+        </div>
+
+    </div>
+</body>
+</html>
