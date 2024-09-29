@@ -50,7 +50,7 @@ chat_session = model.start_chat(
     {
       "role": "model",
       "parts": [
-        "##  French Toast\n\n**Ingredients:**\n\n* 4 slices of bread\n* 1 egg\n* 1/4 cup milk\n* 1 teaspoon sugar\n* 1/2 teaspoon vanilla extract\n* Butter or cooking spray, for greasing\n\n**Instructions:**\n\n1. In a shallow dish, whisk together the egg, milk, sugar, and vanilla extract.\n2. Dip each slice of bread into the egg mixture, making sure it's fully coated.\n3. Heat a skillet or griddle over medium heat and grease with butter or cooking spray.\n4. Cook the bread for 2-3 minutes per side, or until golden brown and cooked through. \n5. Serve immediately with your favorite toppings, such as syrup, fruit, whipped cream, or powdered sugar.\n\nDo you have any other questions? \n",
+        "French Toast\n\n**Ingredients:**\n\n* 4 slices of bread\n* 1 egg\n* 1/4 cup milk\n* 1 teaspoon sugar\n* 1/2 teaspoon vanilla extract\n* Butter or cooking spray, for greasing\n\n**Instructions:**\n\n1. In a shallow dish, whisk together the egg, milk, sugar, and vanilla extract.\n2. Dip each slice of bread into the egg mixture, making sure it's fully coated.\n3. Heat a skillet or griddle over medium heat and grease with butter or cooking spray.\n4. Cook the bread for 2-3 minutes per side, or until golden brown and cooked through. \n5. Serve immediately with your favorite toppings, such as syrup, fruit, whipped cream, or powdered sugar.\n\nDo you have any other questions? \n",
       ],
     },
   ]
@@ -120,7 +120,7 @@ def search(request):
         if user_input:
             prompt = f"{user_input}"
             try:
-                response = model.generate_content(prompt)  # Call the AI model
+                response = chat_session.send_message(prompt)  # Call the AI model
                 if response and response.text:
                     # Format the response to improve display in HTML
                     chatbot_response = format_recipe(response.text)
