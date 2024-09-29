@@ -16,16 +16,17 @@
             </div>
   <!--Variety----->
     <section id="variety" class="variety pt-4">
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-stretch">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="#">[A]</a>
+                                <a href="{% url 'recipe_detail' 'A' %}">[A]</a>
                             </h5>
                             <p class="card-text">
-                                Description...
+                                Description: {{recipe1}}
                             </p>
                             <div class="read-more"><a href="#">
                                 <i class="fas fa-arrow-circle-right"></i>
@@ -40,10 +41,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="#">[B]</a>
+                                <a href="{% url 'recipe_detail' 'B' %}">[B]</a>
                             </h5>
                             <p class="card-text">
-                                Description...
+                                Description: {{recipe2}}
                             </p>
                             <div class="read-more"><a href="#">
                                 <i class="fas fa-arrow-circle-right"></i>
@@ -58,10 +59,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="#">[C]</a>
+                                <a href="{% url 'recipe_detail' 'C' %}">[C]</a>
                             </h5>
                             <p class="card-text">
-                                Description...
+                                Description: {{recipe3}}
                             </p>
                             <div class="read-more"><a href="#">
                                 <i class="fas fa-arrow-circle-right"></i>
@@ -76,10 +77,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="#">[D]</a>
+                                <a href="{% url 'recipe_detail' 'D' %}">[D]</a>
                             </h5>
                             <p class="card-text">
-                                Description...
+                                Description: {{recipe4}}
                             </p>
                             <div class="read-more"><a href="#">
                                 <i class="fas fa-arrow-circle-right"></i>

@@ -21,6 +21,8 @@ app_name = 'ReveilleEats'
 urlpatterns = [
     path('', views.login_view, name='login'),  # Login page as the default
     path('home/', views.home, name='home'),  # Home page (requires login)
+    path('recipes/',views.screen4,name = 'recipes'),
+    path('recipe/<str:variety>/', views.recipe_detail, name='recipe_detail'),
     path('logout/', views.logout_view, name='logout'),  # Logout functionality
     path('search/', views.search, name='search'),  # Chatbot search functionality
 ]
