@@ -1,0 +1,249 @@
+<html lang="en"></html>
+  
+<head>
+  <meta charset="UTF-8" />
+  <title>Screen 1</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+</head>
+
+  
+<body>
+  <h1><br>Recipe Options:<br> </h1>
+  <div class="section-title">
+                <h2 class="text-center font-weight-bold">------------------------- <br>     <br> Categories </br> </br> </h2>
+            </div>
+  <!--Variety----->
+    <section id="variety" class="variety pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">[A]</a>
+                            </h5>
+                            <p class="card-text">
+                                Description...
+                            </p>
+                            <div class="read-more"><a href="#">
+                                <i class="fas fa-arrow-circle-right"></i>
+                                Read More
+                            </a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!---->
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">[B]</a>
+                            </h5>
+                            <p class="card-text">
+                                Description...
+                            </p>
+                            <div class="read-more"><a href="#">
+                                <i class="fas fa-arrow-circle-right"></i>
+                                Read More
+                            </a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!---->
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">[C]</a>
+                            </h5>
+                            <p class="card-text">
+                                Description...
+                            </p>
+                            <div class="read-more"><a href="#">
+                                <i class="fas fa-arrow-circle-right"></i>
+                                Read More
+                            </a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!---->
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">[D]</a>
+                            </h5>
+                            <p class="card-text">
+                                Description...
+                            </p>
+                            <div class="read-more"><a href="#">
+                                <i class="fas fa-arrow-circle-right"></i>
+                                Read More
+                            </a></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!---->
+            </div>
+        </div>
+    </section>
+    <!---End of Variety-->
+</body>
+  
+</html>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Ewert);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 20;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 100.5%;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Ewert',serif;
+  font-weight: 100;
+  font-style: normal;
+  
+}
+
+body {
+  background-color: #550000;
+  color: #f5dbc8;
+  box-sizing: border-box;
+  padding: 10px;
+  letter-spacing: 0.03em;
+  font-size: 1.6rem;
+}
+
+img {
+  white-space: pre;
+  padding: 10px;
+  width: 150 px;
+}
+
+/*========== Variety Section===========*/
+
+.variety{
+    padding-bottom: 30px;
+}
+
+.variety .card{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    float: left;
+    margin-left: 150px;
+    border: 0;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    position: relative;
+    background: transparent;
+}
+.variety .card-body{
+    z-index: 10;
+    background: #FFFFFF;
+    border-top:8px solid #FFFFFF;
+    padding: 200px;
+    box-shadow: 0px 2px 15px rgba(241, 159,5, 0.5 );
+    margin-top: 0px;
+    transition: 0.3s;
+}
+.variety .card-title{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.variety .card-title a{
+    color: #800000;
+    transition: 0.3s;
+    font-size: 50px;
+}
+.variety .card-text{
+    color: #800000;
+    font-size: 25px;
+}
+.variety .read-more a{
+    color: #800000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.variety .read-more a:hover{
+    color: #800000;
+}
+
+.variety .card:hover img{
+    transform: scale(1.1);
+
+}
+.variety .card:hover .card-body{
+    border-color: #800000;
+}
+.variety .card:hover  .card-body .card-title a{
+    color: #800000;
+}
+/*==========End of Variety Section===========*/
+
+.vertical-scroll-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  gap: 6rem 0;
+  min-width: 400px;
+  overflow-y: scroll;
+  scrollbar-color: #800000;
+  scroll-snap-type: y mandatory;  
+  padding: 200px 20px;
+  height: 400px;
+}
+
+.vertical-scroll-container img {
+  scroll-snap-align: center;
+  width: 400px;
+
+  animation: slideInOut;
+  animation-timeline: view();
+}
+
+@keyframes slideInOut {
+  entry 0% {
+    transform: scale(.8) translateY(100px); 
+    opacity: 0;
+  }
+  entry 100% { 
+    transform: scale(1) translateY(0); 
+    opacity: 1;
+  }
+  exit 0% {
+    transform: scale(1) translateY(0); 
+    opacity: 1;    
+  }
+  exit 100% { 
+    transform: scale(.8) translateY(-100px); 
+    opacity: 0 
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .vertical-scroll-container img {
+    padding: 0;
+    width: 300px;
+  }
+  
+}
+</style>
