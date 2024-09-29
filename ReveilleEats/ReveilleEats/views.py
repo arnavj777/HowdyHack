@@ -116,8 +116,6 @@ recipe_4 = ''
 recipe_5 = ''
 
 def search(request):
-    recipe_1, recipe_2, recipe_3, recipe_4 = '', '', '', ''  # Initialize with default values
-
     if request.method == "POST":
         user_input = request.POST.get("q")  # Get the input from the form
 
@@ -156,30 +154,35 @@ def search(request):
     return render(request, 'screen4.html', context)
 
 
+
 def recipe_detail(request, variety):
+    # Retrieve recipes from session
+    recipe_1 = request.session.get('recipe_1', '')
+    recipe_2 = request.session.get('recipe_2', '')
+    recipe_3 = request.session.get('recipe_3', '')
+    recipe_4 = request.session.get('recipe_4', '')
+    
     # Logic to determine which recipe was clicked
     if variety == 'A':
-        recipe = request.session.get('recipe_1', '')
+        recipe = recipe_1
     elif variety == 'B':
-        recipe = request.session.get('recipe_2', '')
+        recipe = recipe_2
     elif variety == 'C':
-        recipe = request.session.get('recipe_3', '')
+        recipe = recipe_3
     elif variety == 'D':
-        recipe = request.session.get('recipe_4', '')
+        recipe = recipe_4
     else:
-        recipe = ''  # Default to an empty string if no valid variety is found
-
-    chatbot_response = ''  # Initialize with a default value
+        recipe = 'Unknown Recipe'
 
     try:
         response = chat_session.send_message(recipe)  # Call the AI model
-        if response and hasattr(response, 'candidates') and len(response.candidates) > 0:
-            chatbot_response = format_recipe(response.candidates[0]['output'])  # Format the response
+        if response and 'candidates' in response:
+            recipe_text = response.candidates[0]['output']  # Extract the text content from the response object
+            chatbot_response = format_recipe(recipe_text)
     except Exception as e:
         chatbot_response = f"Error: {e}"
 
     return render(request, 'navbar.html', {'chatbot_response': chatbot_response})
-
 '''    
     # Logic to determine which recipe was clicked
     recipe_1 = request.session.get('recipe_1', '')
@@ -205,8 +208,8 @@ def recipe_detail(request, variety):
         chatbot_response = f"Error: {e}"
 
     return render(request, 'navbar.html', {'chatbot_response': chatbot_response})    
-
 '''
+
 '''def select(request):
     """
     Handles the user's input and displays the chatbot's response on the same page.
@@ -229,6 +232,26 @@ def recipe_detail(request, variety):
 '''
 
 def format_recipe(text):
+    """
+    Custom function to format recipe output for better display.
+    """
+    # Example recipe response will contain ingredients and instructions
+    formatted_text = text.replace('</li></li>', '</li>')  # Make sure it's a string at this point
+    
+    # Add proper headers for ingredients and instructions
+    formatted_text = formatted_text.replace('**Ingredients:**', '<h3>Ingredients:</h3><ul>')
+    formatted_text = formatted_text.replace('**Instructions:**', '</ul><h3>Instructions:</h3><ol>')
+    
+    # Convert list-like items into actual HTML list elements
+    formatted_text = formatted_text.replace('* ', '<li>').replace('1.', '<li>').replace('2.', '</li><li>')
+    formatted_text = formatted_text.replace('3.', '</li><li>').replace('4.', '</li><li>')
+    formatted_text = formatted_text.replace('5.', '</li><li>').replace('6.', '</li><li>')
+    formatted_text = formatted_text.replace('7.', '</li><li>').replace('8.', '</li><li>')
+    
+    # Ensure lists are closed properly
+    formatted_text += '</ol>'
+    
+    return formatted_text
     """
     Custom function to format recipe output for better display.
     """
