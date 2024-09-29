@@ -94,7 +94,7 @@
         <!-- Search Form -->
         <form method="POST" action="{% url 'search' %}">
             {% csrf_token %}
-            <input type="text" name="q" placeholder="Enter your message here" required>
+            <input type="text" name="q" placeholder="Enter your ingredients here" required>
             <button type="submit">Send</button>
         </form>
 
