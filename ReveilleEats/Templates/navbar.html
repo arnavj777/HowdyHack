@@ -5,19 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat with Reveille</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        .gowun-batang-regular {
+            font-family: "Gowun Batang", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .gowun-batang-bold {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9; /* Light background for contrast */
+            font-family: 'Gowun Batang', sans-serif;
+            background-color: #A24857; /* Light background for contrast */
             padding: 20px;
             color: #500000; /* Texas A&M Maroon */
         }
         h1 {
+            font-family: 'Gowun Batang', sans-serif;
             text-align: center;
             color: #500000; /* Texas A&M Maroon */
             font-size: 2.5em;
         }
         #chat-container {
+            font-family: 'Gowun Batang', sans-serif;
             width: 50%;
             margin: 0 auto;
             background-color: #FFFFFF; /* White background for the chat container */
@@ -27,17 +42,20 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         form {
+            font-family: 'Gowun Batang', sans-serif;
             margin-bottom: 20px;
             text-align: center;
         }
         input[type="text"] {
             width: 70%;
+            font-family: 'Gowun Batang', sans-serif;
             padding: 10px;
             font-size: 16px;
             border: 2px solid #500000; /* Maroon border for input */
             border-radius: 5px;
         }
         button {
+            font-family: 'Gowun Batang', sans-serif;
             padding: 10px 15px;
             font-size: 16px;
             background-color: #500000; /* Texas A&M Maroon for button */
@@ -50,14 +68,22 @@
             background-color: #730000; /* Darker maroon on hover */
         }
         #chatbot-response {
+            font-family: 'Gowun Batang', sans-serif;
             background-color: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         #chatbot-response p {
+            font-family: 'Gowun Batang', sans-serif;
             font-size: 18px;
             color: #500000; /* Maroon for text inside chatbot response */
+        }
+
+        img {
+            white-space: pre;
+            padding: 20px;
+            width: 30 px;
         }
     </style>
 </head>
@@ -80,6 +106,9 @@
                 <p>Hi, I am Reveille. Tell me what ingredients you have, and I will help you create a recipe!</p>
             {% endif %}
         </div>
+
+        <a> <img src='https://i.postimg.cc/dQH2fQh7/bba79e31-083c-4d99-b890-ebd786bb0652-removebg-preview.png' border='0' />
+        </a>
 
     </div>
 </body>
