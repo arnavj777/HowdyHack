@@ -2,7 +2,9 @@
 
 <img width="1262" alt="Screenshot 2024-09-29 at 11 40 39 AM" src="https://github.com/user-attachments/assets/75954b3d-1437-43fd-8c6a-99c04a48ec36">
 
-
+Project Contributors:
+- Arnav J
+- Anahita K 
 
 ## ACCESS OUR PROJECT HERE!
 
