@@ -1,6 +1,7 @@
 # HowdyHack
 
-<img width="544" alt="Screenshot 2024-09-29 at 11 39 42 AM" src="https://github.com/user-attachments/assets/8c5608c4-266a-451b-aeda-9048bcb44c5b">
+<img width="1262" alt="Screenshot 2024-09-29 at 11 40 39 AM" src="https://github.com/user-attachments/assets/75954b3d-1437-43fd-8c6a-99c04a48ec36">
+
 
 
 ## ACCESS OUR PROJECT HERE!
