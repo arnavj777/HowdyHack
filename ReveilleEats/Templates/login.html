@@ -7,9 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     @import url(https://fonts.googleapis.com/css?family=Ewert);
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    .gowun-batang-regular {
+            font-family: "Gowun Batang", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+    .gowun-batang-bold {
+            font-family: "Gowun Batang", serif;
+            font-weight: 700;
+            font-style: normal;
+        }
 
     * {
       margin: 0;
@@ -18,6 +32,7 @@
     }
 
     html {
+      font-family: "Gowun Batang", serif;
       font-size: 100.5%;
       text-transform: uppercase;
       text-align: center;
@@ -27,7 +42,8 @@
     }
 
     body {
-      background-color: #550000;
+      font-family: "Gowun Batang", serif;
+      background-color: #A24857;
       color: #f5dbc8;
       padding: 20px;
       letter-spacing: 0.03em;
@@ -35,6 +51,7 @@
     }
 
     h1 {
+      font-family: "Gowun Batang", serif;
       margin-bottom: 20px;
     }
 
@@ -45,6 +62,7 @@
     }
 
     .container {
+      font-family: "Gowun Batang", serif;
       background-color: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       padding: 20px;
@@ -54,6 +72,7 @@
     }
 
     label {
+      font-family: "Gowun Batang", serif;
       font-size: 1.2rem;
       margin: 10px 0 5px;
       display: block;
@@ -61,6 +80,7 @@
 
     input[type="text"],
     input[type="password"] {
+      font-family: "Gowun Batang", serif;
       width: 100%;
       padding: 12px 15px;
       margin: 8px 0;
@@ -73,12 +93,13 @@
 
     input[type="text"]:focus,
     input[type="password"]:focus {
+      font-family: "Gowun Batang", serif;
       border-color: #aa4404;
       outline: none;
     }
 
     button {
-      background-color: #cc1515;
+      background-color: #038d56;
       color: white;
       padding: 14px 20px;
       margin: 8px 0;
@@ -102,7 +123,8 @@
       }
 
       img {
-        width: 120px;
+        height: 140px;
+        width: 140px;
       }
     }
   </style>
@@ -116,10 +138,10 @@
 
   <form action="home/" method="post">
     <div class="container">
-      <label for="uname"><b>Username</b></label>
+      <label for="uname"><b>Username: </b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
 
-      <label for="psw"><b>Password</b></label>
+      <label for="psw"><b>Password: </b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
       <button type="submit">Login</button>
