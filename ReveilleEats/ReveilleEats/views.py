@@ -1,34 +1,4 @@
-'''from django.http import HttpResponse
-from django.shortcuts import render
 
-import google.generativeai as genai
-import os
-
-API_KEY="AIzaSyBePnJjq6UcQIwgWoAAFtp6tbOK_G8tzDY"
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel("gemini-1.5-flash")
-
-
-def home(request):
-    
-    return render(request, 'home.html')
-
-def search(request):
-    chatbot_response = None  # Initialize an empty variable for the chatbot response
-    
-    # Check if the request is a POST request
-    if request.method == "POST":
-        title = request.POST.get("q")
-        
-        # Generate content using the AI model
-        if title:
-            response = model.generate_content(title)
-            # Check if response has valid content
-            if response:
-                chatbot_response = response.text
-    
-    # Render the same page with the chatbot response passed in context
-    return render(request, 'navbar.html', {'chatbot_response': chatbot_response})'''
 from django.shortcuts import render
 from django.http import HttpResponse
 import google.generativeai as genai
