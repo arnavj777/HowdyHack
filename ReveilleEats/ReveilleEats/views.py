@@ -32,6 +32,9 @@ def search(request):
 from django.shortcuts import render
 from django.http import HttpResponse
 import google.generativeai as genai
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Configure Google Generative AI with your API key
 API_KEY = "AIzaSyBePnJjq6UcQIwgWoAAFtp6tbOK_G8tzDY"  # Replace with your actual API key
@@ -92,9 +95,12 @@ def login(request):
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Home page with the chatbot after login
 @login_required
+@csrf_exempt
+
 def home(request):
     """
     Displays the homepage with the chat interface. Requires login.
@@ -102,20 +108,21 @@ def home(request):
     return render(request, 'navbar.html')  # Render the home template
 
 def login_view(request):
-    """
-    Renders the login page and handles user authentication.
-    """
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST['uname']
+        password = request.POST['psw']
+
+        # Authenticate the user
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
-            auth_login(request, user)
-            return redirect('home')  # Redirect to the home page after successful login
+            login(request, user)
+            return redirect('home') 
         else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
+            messages.error(request, "Invalid username or password")
     
     return render(request, 'login.html')
+    
 
 def logout_view(request):
     """
