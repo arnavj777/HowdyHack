@@ -109,15 +109,10 @@ def home(request):
     """
     #if loggedIn:
     return render(request, 'navbar.html')  # Render the home template
-recipe_1 = ''
-recipe_2 = ''
-recipe_3 = ''
-recipe_4 = ''
-recipe_5 = ''
+
 
 def search(request):
-    recipe_1, recipe_2, recipe_3, recipe_4 = '', '', '', ''  # Initialize with default values
-
+  
     if request.method == "POST":
         user_input = request.POST.get("q")  # Get the input from the form
 
