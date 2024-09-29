@@ -42,12 +42,17 @@
     }
 
     body {
+      transition: opacity 1s;
       font-family: "Gowun Batang", serif;
       background-color: #A24857;
       color: #f5dbc8;
       padding: 20px;
       letter-spacing: 0.03em;
       font-size: 1.6rem;
+    }
+
+    .fade-out {
+      opacity: 0;
     }
 
     h1 {
@@ -136,7 +141,7 @@
     <img src='https://i.postimg.cc/dQH2fQh7/bba79e31-083c-4d99-b890-ebd786bb0652-removebg-preview.png' alt="Reveille Logo" />
   </a>
 
-  <form action="home/" method="post">
+  <form id="login-form" action="home/" method="post">
     <div class="container">
       <label for="uname"><b>Username: </b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
@@ -147,6 +152,26 @@
       <button type="submit">Login</button>
     </div>
   </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('login-form');
+
+      // Listen for form submission event
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Trigger fade-out animation
+        document.body.classList.add('fade-out');
+
+        // Wait for the fade-out animation to complete (1s in this case)
+        setTimeout(function () {
+          // Manually submit the form after the fade-out
+          form.submit();
+        }, 1000); // Match the timeout duration with the CSS transition time
+      });
+    });
+  </script>
 </body>
 
 </html>
