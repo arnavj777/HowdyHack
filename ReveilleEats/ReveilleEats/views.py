@@ -36,7 +36,7 @@ model = genai.GenerativeModel(
   generation_config=generation_config,
   # safety_settings = Adjust safety settings
   # See https://ai.google.dev/gemini-api/docs/safety-settings
-  system_instruction="I will input ingredients and you will output 1 recipe idea ONLY. When I  input 'next' you will give the next recipe name. Then I will give you one of the recipe names you gave me and you will tell me how to make it.The format will be dish name, ingredients needed, instructions and asking if user has more questions. If input is not about ingredients respons with please input ingredients",
+  system_instruction="I will input ingredients and you will output 1 recipe idea. The format will be dish name, ingredients needed, instructions and asking if user has more questions. If input is not about ingredients respons with please input ingredients",
 )
 
 chat_session = model.start_chat(
@@ -76,8 +76,6 @@ def home(request):
     Displays the homepage with the chat interface. Requires login.
     """
     return render(request, 'navbar.html')  # Render the home template
-def screen4(request):
-    return render(request,"screen4.html")
 
 def login_view(request):
     if request.method == 'POST':
@@ -109,111 +107,12 @@ def home(request):
     """
     #if loggedIn:
     return render(request, 'navbar.html')  # Render the home template
-recipe_1 = ''
-recipe_2 = ''
-recipe_3 = ''
-recipe_4 = ''
-recipe_5 = ''
 
 def search(request):
-    if request.method == "POST":
-        user_input = request.POST.get("q")  # Get the input from the form
-
-        if user_input:
-            prompt = f"{user_input}"
-            try:
-                # Get the AI-generated content
-                recipe_1_response = model.generate_content(prompt)
-                recipe_1 = recipe_1_response.candidates[0]['output']  # Access the actual text content
-
-                recipe_2_response = chat_session.send_message("next")
-                recipe_2 = recipe_2_response.candidates[0]['output']
-
-                recipe_3_response = chat_session.send_message("next")
-                recipe_3 = recipe_3_response.candidates[0]['output']
-
-                recipe_4_response = chat_session.send_message("next")
-                recipe_4 = recipe_4_response.candidates[0]['output']
-
-                # Store the recipes in the session
-                request.session['recipe_1'] = recipe_1
-                request.session['recipe_2'] = recipe_2
-                request.session['recipe_3'] = recipe_3
-                request.session['recipe_4'] = recipe_4
-
-            except Exception as e:
-                chatbot_response = f"Error: {e}"
-
-    context = {
-        "recipe1": recipe_1,
-        "recipe2": recipe_2,
-        "recipe3": recipe_3,
-        "recipe4": recipe_4,
-    }
-
-    return render(request, 'screen4.html', context)
-
-
-
-def recipe_detail(request, variety):
-    # Retrieve recipes from session
-    recipe_1 = request.session.get('recipe_1', '')
-    recipe_2 = request.session.get('recipe_2', '')
-    recipe_3 = request.session.get('recipe_3', '')
-    recipe_4 = request.session.get('recipe_4', '')
-    
-    # Logic to determine which recipe was clicked
-    if variety == 'A':
-        recipe = recipe_1
-    elif variety == 'B':
-        recipe = recipe_2
-    elif variety == 'C':
-        recipe = recipe_3
-    elif variety == 'D':
-        recipe = recipe_4
-    else:
-        recipe = 'Unknown Recipe'
-
-    try:
-        response = chat_session.send_message(recipe)  # Call the AI model
-        if response and 'candidates' in response:
-            recipe_text = response.candidates[0]['output']  # Extract the text content from the response object
-            chatbot_response = format_recipe(recipe_text)
-    except Exception as e:
-        chatbot_response = f"Error: {e}"
-
-    return render(request, 'navbar.html', {'chatbot_response': chatbot_response})
-'''    
-    # Logic to determine which recipe was clicked
-    recipe_1 = request.session.get('recipe_1', '')
-    recipe_2 = request.session.get('recipe_2', '')
-    recipe_3 = request.session.get('recipe_3', '')
-    recipe_4 = request.session.get('recipe_4', '')
-
-    if variety == 'A':
-        recipe = recipe_1
-    elif variety == 'B':
-        recipe = recipe_2
-    # Add more conditions as needed for other recipes
-    elif variety == 'C':
-        recipe = recipe_3
-    elif variety == 'D':
-        recipe = recipe_4
-    try:
-        response = chat_session.send_message(recipe)  # Call the AI model
-        if response and response.text:
-            # Format the response to improve display in HTML
-            chatbot_response = format_recipe(response)
-    except Exception as e:
-        chatbot_response = f"Error: {e}"
-
-    return render(request, 'navbar.html', {'chatbot_response': chatbot_response})    
-'''
-
-'''def select(request):
     """
     Handles the user's input and displays the chatbot's response on the same page.
     """
+    chatbot_response = None  # Initialize the response variable
 
     if request.method == "POST":
         user_input = request.POST.get("q")  # Get the input from the form
@@ -229,29 +128,9 @@ def recipe_detail(request, variety):
                 chatbot_response = f"Error: {e}"
 
     return render(request, 'navbar.html', {'chatbot_response': chatbot_response})
-'''
+
 
 def format_recipe(text):
-    """
-    Custom function to format recipe output for better display.
-    """
-    # Example recipe response will contain ingredients and instructions
-    formatted_text = text.replace('</li></li>', '</li>')  # Make sure it's a string at this point
-    
-    # Add proper headers for ingredients and instructions
-    formatted_text = formatted_text.replace('**Ingredients:**', '<h3>Ingredients:</h3><ul>')
-    formatted_text = formatted_text.replace('**Instructions:**', '</ul><h3>Instructions:</h3><ol>')
-    
-    # Convert list-like items into actual HTML list elements
-    formatted_text = formatted_text.replace('* ', '<li>').replace('1.', '<li>').replace('2.', '</li><li>')
-    formatted_text = formatted_text.replace('3.', '</li><li>').replace('4.', '</li><li>')
-    formatted_text = formatted_text.replace('5.', '</li><li>').replace('6.', '</li><li>')
-    formatted_text = formatted_text.replace('7.', '</li><li>').replace('8.', '</li><li>')
-    
-    # Ensure lists are closed properly
-    formatted_text += '</ol>'
-    
-    return formatted_text
     """
     Custom function to format recipe output for better display.
     """
